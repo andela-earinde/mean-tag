@@ -1,0 +1,21 @@
+{
+  "name": "mean-tag",
+  "version": "1.0.0",
+  "description": "tag microservice for the stackoverflow clone app",
+  "main": "server.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Arinde Eniola",
+  "license": "none",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
