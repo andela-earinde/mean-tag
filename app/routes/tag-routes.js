@@ -1,6 +1,6 @@
 
-module.exports = function(app) {
-	var index = require('../controllers/tag-controller');
+var index = require('../controllers/tag-controller');
 
-    app.get('/', index.render);
+module.exports = function(app) {
+	app.route('/users').post(index.create);
 }
