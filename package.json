@@ -4,7 +4,8 @@
   "description": "tag microservice for the stackoverflow clone app",
   "main": "server.js",
   "scripts": {
-    "test": "none"
+    "test": "none",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "method-override": "^2.3.2",
     "mongoose": "^4.0.1",
     "morgan": "^1.5.2"
+  },
+  "engines": {
+    "node": "0.12.x"
   }
 }
