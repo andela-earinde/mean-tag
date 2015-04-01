@@ -10,5 +10,11 @@ module.exports = function(app) {
 
 	.post(index.create);
 
+	router.route('/tags/:tag_name')
+
+	.get(index.getTag)
+
+	.put(index.updateTag);
+
 	app.use('/api', router);
 }
