@@ -6,6 +6,8 @@ module.exports = function(app) {
 
 	router.route('/tags')
 
+	.get(index.get)
+
 	.post(index.create);
 
 	app.use('/api', router);
