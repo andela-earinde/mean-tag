@@ -10,8 +10,11 @@ var dbStatus = db.connection;
 dbStatus.on('error', console.error.bind(console, 'connection:error'));
 
 var app  = express();
-app.listen(3000, function(){
-	console.log("server runnning at http://localhost:3000");
+
+app.set('port', (process.env.PORT || 3000))
+
+app.listen(app.get('port'), function(){
+	console.log("server runnning at http://localhost:"+app.get('port'));
 });
 
 module.exports = app;
