@@ -11,7 +11,7 @@ dbStatus.on('error', console.error.bind(console, 'connection:error'));
 
 var app  = express();
 
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function(){
 	console.log("server runnning at http://localhost:"+app.get('port'));
