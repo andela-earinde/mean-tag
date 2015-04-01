@@ -17,9 +17,7 @@ exports.create = function(req, res) {
     var tag = new Tags();
     tag.tagName = req.body.tagName;
     tag.description = req.body.description;
-    tag.posts.push(req.body.posts);
-    tag.users.push({name: req.body.users});
-
+    
     tag.save(function(err) {
         if(err) {         
             if(err.code === 11000) {
@@ -31,6 +29,17 @@ exports.create = function(req, res) {
         }
         else {
         	res.json({success: "Tag created"});
+        }
+    });
+}
+
+exports.delete = function(req, res) {
+    Tags.remove({}, function(err){
+        if(err) {
+            res.json({error: "Could not Delete the tags"});
+        }
+        else{
+            res.json({succes: "Tags deleted"});
         }
     });
 }
@@ -47,19 +56,42 @@ exports.getTag = function(req, res) {
     });
 }
 
+//update a single tag
 exports.updateTag = function(req, res) {
-    var tag = req.params.tag_name;
-    var update = {req.body, updatedAt: Date.now};
-    Tags.findOneAndUpdate({tagName: tag}, update, {upsert: false}, function(err, doc) {
-        if(err) {
-            res.json(err);
+    if(!req.body.tagName || !req.body.description) {
+        res.json({error: "The tag most have a Name and Description"});
+    }
+    else{
+        var tag = req.params.tag_name;
+        var update = {
+            tagName: req.body.tagName,
+            description: req.body.description,
+            updatedAt: Date.now()
+        };
+        var options = {
+            new: true,
+            upsert: false
         }
-        else if(doc) {
-            res.json({success: "Tag updates", update: doc});
-        }
-    })
+        Tags.findOneAndUpdate({tagName: tag}, update, options, function(err, doc) {
+            if(err) {
+                res.json(err);
+            }
+            else if(doc) {
+                doc.markModified('updatedAt');
+                res.json({success: "Tag updated", update: doc});
+            }
+        });
+    }
 }
 
+//delete a single tag
 exports.deleteTag = function(req, res) {
-
+    Tags.findOneAndRemove({tagName: req.params.tag_name}, {},function(err, doc) {
+        if(err || !doc) {
+            res.json({error: "Tag not deleted or does not exists"});
+        }
+        else {
+             res.json({success: "Tag Deleted"});
+        }
+    })
 }

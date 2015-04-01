@@ -8,13 +8,17 @@ module.exports = function(app) {
 
 	.get(index.get)
 
-	.post(index.create);
+	.post(index.create)
+
+	.delete(index.delete);
 
 	router.route('/tags/:tag_name')
 
 	.get(index.getTag)
 
-	.put(index.updateTag);
+	.put(index.updateTag)
+
+	.delete(index.deleteTag);
 
 	app.use('/api', router);
 }
