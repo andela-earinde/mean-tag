@@ -34,7 +34,7 @@ exports.create = function(req, res) {
 }
 
 exports.delete = function(req, res) {
-    Tags.remove({}, function(err){
+    Tags.remove({}, function(err){                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         if(err) {
             res.json({error: "Could not Delete the tags"});
         }
@@ -91,7 +91,7 @@ exports.deleteTag = function(req, res) {
             res.json({error: "Tag not deleted or does not exists"});
         }
         else {
-             res.json({success: "Tag Deleted"});
+            res.json({success: "Tag Deleted"});
         }
     })
 }

@@ -10,7 +10,7 @@ function required(val) {
 	return false;
 }
 
-var customReq = [required, "The {PATH} field is required please fill it"];
+var customReq = [required, "The {PATH} field is required, please fill it"];
 
 
 var TagSchema = new Schema({
