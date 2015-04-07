@@ -15,7 +15,6 @@ describe("tag-Model Test", function() {
     });
 
     afterEach(function(done) {
-    	console.log("called");
         Tags.remove(function(err) {
         	if(err) {
         		console.log(err);
@@ -33,6 +32,15 @@ describe("tag-Model Test", function() {
         });
 
         it("should throw an error if the tagname is empty", function(done) {
+            tag.tagName = "";
+
+            tag.save(function(err) {
+                expect(err).not.toBeNull();
+                done();
+            });
+        });
+
+        it("should throw an error if the description is empty", function(done) {
         	tag.description = "";
 
         	tag.save(function(err) {
