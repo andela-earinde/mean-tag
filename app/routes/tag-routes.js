@@ -9,6 +9,8 @@ module.exports = function(app) {
 	.get(index.get)
 
 	.post(index.create)
+  
+    .put(index.updateUserName)
 
 	.delete(index.delete);
 
@@ -19,6 +21,12 @@ module.exports = function(app) {
 	.put(index.updateTag)
 
 	.delete(index.deleteTag);
+
+	router.route("/tags/user/:name")
+
+	.get(index.getUserTag)
+
+	.delete(index.deleteAllUserTags);
 
 	app.use('/api', router);
 

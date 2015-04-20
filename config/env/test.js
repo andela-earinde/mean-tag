@@ -1,4 +1,4 @@
 
 module.exports  = {
-	db: "mongodb://localhost/tagtest"
+	db: "mongodb://localhost/mydb"
 }
