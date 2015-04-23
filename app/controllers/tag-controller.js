@@ -131,7 +131,7 @@ exports.updateUserName = function(req, res) {
 
 //delete a single tag
 exports.deleteTag = function(req, res) {
-    Tags.findOneAndRemove({tagName: req.params.tag_name}, {},function(err, doc) {
+    Tags.findOneAndRemove({tagName: req.params.tag_name, author: req.body.author}, {},function(err, doc) {
         if(err || !doc) {
             res.json({error: "Tag not deleted or does not exists"});
         }
